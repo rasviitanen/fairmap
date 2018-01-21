@@ -33,6 +33,7 @@ content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
     #exhibitor_names {
         padding: 12px;
     }
+    
     #interactive_map {
         z-index: -1;
         margin:0;position:fixed;top:0;right:0;bottom:0; left:0;
@@ -46,9 +47,9 @@ content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
     }
 
     .sidenav li {
-        padding: 0.1em;
+        padding: 0.4em;
         text-decoration: none;
-        font-size: 1em;
+        font-size: 1.2em;
         color: #818181;
         display: block;
         transition: 0.3s;
@@ -152,7 +153,7 @@ content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
   <ul id="exhibitor_names"></ul>
 </div>
 
-<span style="font-size:30px;cursor:pointer;background-color: #2AB4C9; padding:5px; color:white;" onclick="openNav()">&#9776; Exhibitor list</span>
+<span style="font-size:30px;cursor:pointer;background-color: #2AB4C9; padding:8px; color:white;" onclick="openNav()">&#9776; Exhibitor list</span>
 
 <div id="map-container" class="svg-container" onclick="closeNav()">
     <div id="interactive_map" class="svg-content-responsive"/>
@@ -166,7 +167,7 @@ content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 
 //Side navigation, list of exhibitors
 function openNav() {
-    document.getElementById("exhibitor_list").style.width = "250px";
+    document.getElementById("exhibitor_list").style.width = "350px";
 }
 
 function closeNav() {
