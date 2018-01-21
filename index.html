@@ -429,6 +429,7 @@ d3.xml(svg_link).mimeType("image/svg+xml").get(function(error, xml) {
         var textnode = document.createTextNode(exhibitor_dict[montrar[i].getElementsByTagName("g")[0].textContent.trim()] + " ");
         node.textContent = montrar[i].getElementsByTagName("g")[0].textContent.trim() + " ";
         node.appendChild(textnode);
+        node.setAttribute("onclick", "closeNav()");
 
         //add the climate-heart
         var node_image = document.createElement("IMG");
