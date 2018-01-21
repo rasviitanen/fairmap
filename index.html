@@ -159,6 +159,7 @@
 
 <script>
 
+//Side navigation, list of exhibitors
 function openNav() {
     document.getElementById("exhibitor_list").style.width = "250px";
 }
@@ -169,14 +170,9 @@ function closeNav() {
 
 var skillsets = document.getElementById("skillset_list").childNodes;
 
-add_skillset_listener = function() {
-    for (var i = 1; i < skillsets.length; i += 2) {
-        skillsets[i].addEventListener('click', clickOnSkillset, false);
-    }
-};
-
 var skillset_dict = {};
 
+//Put in another file/db, see attached python-script to generate this list
 skillset_dict["Logistics"] = ["T116","C60","C02","T135","T125","C51","C70","T130","C49","T112","C33","C17","T123","C20","T108","T104","C38","T99","C52","C66","T126","K88","T142","C69","T96","C34","T132","C05","C36","C32","K83","C10","C27","C72","C26","T131","C30","T143","C59","C55","C11","T136","T149","T122","K82","C64","K73","C07","C63","T100","K76","T134","K87","K74"];
 skillset_dict["Management"] = ["T116","C60","C02","T135","T148","T125","C51","T95","C17","T98","T123","K89","C20","C57","T104","C38","T99","K92","C66","T126","K88","T142","C69","T96","K91","T133","T119","C34","T132","C05","C37","C36","C32","K83","C27","C72","C53","T150","T131","T153","C30","C59","T113","C55","K90","T136","C44","T141","K82","C64","K73","C07","C63","T100","T134"];
 skillset_dict["Advanced Mathematics"] = ["C02","T146","T144","T95","C39","T137","C61","C01","C20","C57","T103","T104","K92","C66","T142","C18","T96","K85","C37","C36","T120","C32","K75","K83","C27","C72","T115","C53","T93","K90","C44","T122","K82","C64","K73","C07","T100","UNKNOWN","C65","T118"];
@@ -198,9 +194,11 @@ skillset_dict["Graphic Design"] = ["T116","C33","C38","K92","T145","K88","T142",
 skillset_dict["Marketing"] = ["T116","C02","T125","K89","C20","T104","C38","K92","T126","K88","C69","T96","T119","T132","K83","C27","C72","T153","C59","K90","K73","C07"];
 skillset_dict["Production"] = ["T148","C62","T144","T125","C51","C35","T152","C70","C49","C47","C33","C01","T123","K89","C58","T108","T104","C38","T126","K88","C09","C69","T132","C05","C06","T120","C50","C32","K83","C27","C24","C72","C26","T131","C54","T153","C30","T143","C59","C55","C21","K86","T136","T139","T141","T122","K82","K73","C07","C63","UNKNOWN","K76","K87","K74"];
 
+//Mark which monters and skillsets are currently in the filter
 var active_skillsets = [];
 var active = [];
 
+//Filter out the skillsets not pressed
 var clickOnSkillset = function() {
     var skill = this.textContent;
     if (active_skillsets.includes(skill)) {
@@ -221,6 +219,7 @@ var clickOnSkillset = function() {
     for (i = 0; i < li.length; i++) {
         var id = li[i].innerHTML.substr(0,li[i].textContent.indexOf(' '));
         if (active_skillsets.length == 0) {
+            //If no skillsets are selected, view every exhibitor
             li[i].style.display = "";
         } else if (active_skillsets.includes(skill) && skillset_dict[skill].includes(id)) {
             li[i].style.display = "";
@@ -238,8 +237,15 @@ var clickOnSkillset = function() {
     }
 };
 
+function add_skillset_listener() {
+    for (var i = 1; i < skillsets.length; i += 2) {
+        skillsets[i].addEventListener('click', clickOnSkillset, false);
+    }
+};
+
 add_skillset_listener();
 
+//Put in another file/db
 var exhibitor_dict = {};
 exhibitor_dict["K80"] = "ABB AB";
 exhibitor_dict["T116"] = "Academic Work - home of the young professionals";
@@ -396,7 +402,13 @@ exhibitor_dict["K74"] = "Yaskawa Nordic AB";
 exhibitor_dict["C65"] = "ZENUITY";
 exhibitor_dict["T118"] = "ÅF";
 
-d3.xml("interactive_map_2.svg").mimeType("image/svg+xml").get(function(error, xml) {
+//Size of svg
+var width = 1188,
+    height = 735;
+    svg_link = "interactive_map_2.svg";
+    heart_link = "http://lintek.larmdagarna.se/student-int/wp-content/themes/larm-wp-theme/images/heart-green.png";
+
+d3.xml(svg_link).mimeType("image/svg+xml").get(function(error, xml) {
   if (error) throw error;
   var svg_map = xml.documentElement;
       document.getElementById("interactive_map").appendChild(svg_map);
@@ -415,7 +427,7 @@ d3.xml("interactive_map_2.svg").mimeType("image/svg+xml").get(function(error, xm
 
         //add the climate-heart
         var node_image = document.createElement("IMG");
-        node_image.setAttribute("src", "http://lintek.larmdagarna.se/student-int/wp-content/themes/larm-wp-theme/images/heart-green.png");
+        node_image.setAttribute("src", heart_link);
         node_image.setAttribute("height", "12px");
         node.appendChild(node_image);
 
@@ -425,6 +437,10 @@ d3.xml("interactive_map_2.svg").mimeType("image/svg+xml").get(function(error, xm
     }
 });
 
+//////////////////////////////////////
+//    ZOOM FUNCTIONS FOR THE MAP    //
+//////////////////////////////////////
+
 var zoom = d3.zoom()
     .on("zoom", zoomed);
 
@@ -432,32 +448,31 @@ function zoomed() {
     d3.select("#zoomable").attr("transform", d3.event.transform);
   }
 
+//Set the map to fullscreen and add the zoom-call
 var svg = d3.select("#interactive_map")
           .attr("width", "100%")
           .attr("height", "100%")
           .call(zoom)
 ;
 
-var width = 1188,
-    height = 735;
 
 function scale_fn(x, y) {
 
-    var transform = d3.zoomIdentity //<-- create your transform with your initialScale
+    var transform = d3.zoomIdentity //<-- Transforms the coordinates when you press on an exhibitor in the list (both pans and zooms)
     .translate((-x*3+ width/2), (-y*3 + height/2))
     .scale(3);
 
-    svg.transition()
+    svg.transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
         .duration(750)
         .call(zoom.transform, transform);
 }
 
-
+//Some cool tooltips, displays the name of the exhibitor over the map
 window.onmousemove = function (e) {
     var x = e.clientX,
         y = e.clientY;
     document.getElementById("tooltip").style.top = (y - 20) + 'px';
-    document.getElementById("tooltip").style.left = (x + 3) + 'px';
+    document.getElementById("tooltip").style.left = (x + 4) + 'px';
 };
 
 var hoverOnMonter = function() {
@@ -466,11 +481,13 @@ var hoverOnMonter = function() {
     document.getElementById("tooltip").style.display = "block";
 };
 
+//!TODO could probalby be improoved
 var exitMonter = function() {
     document.getElementById("tooltip").style.display = "none";
 };
 
 
+// Find a monter on the map, set all other monters to an opacity of 0.4 to make it clearer to the viewer
 var findOnMap = function() {
     var exhibitor_index = this.textContent.substr(0, this.textContent.indexOf(' '));
     var montrar = document.getElementById("Montrar").childNodes;
@@ -485,6 +502,7 @@ var findOnMap = function() {
     }
 };
 
+//The search filter that is applied in the exhibitor list.
 function filter_exhibitors() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("exhibitor_input");
