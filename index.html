@@ -425,6 +425,13 @@ d3.xml(svg_link).mimeType("image/svg+xml").get(function(error, xml) {
   var svg_map = xml.documentElement;
       document.getElementById("interactive_map").appendChild(svg_map);
 
+    //Set the map to fullscreen and add the zoom-call
+    var svg = d3.select("#interactive_map")
+              .attr("width", "100%")
+              .attr("height", "100%")
+              .call(zoom)
+    ;
+
     var montrar = document.getElementById("Montrar").childNodes;
 
     for (var i = 1; i < montrar.length; i += 2) {
@@ -462,14 +469,6 @@ var zoom = d3.zoom()
 function zoomed() {
     d3.select("#zoomable").attr("transform", d3.event.transform);
   }
-
-//Set the map to fullscreen and add the zoom-call
-var svg = d3.select("#interactive_map")
-          .attr("width", "100%")
-          .attr("height", "100%")
-          .call(zoom)
-;
-
 
 function scale_fn(x, y) {
 
