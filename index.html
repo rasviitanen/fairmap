@@ -476,7 +476,7 @@ function scale_fn(x, y) {
     .translate((-x*3+ width/2), (-y*3 + height/2))
     .scale(3);
 
-    svg.transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
+    d3.select("svg").transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
         .duration(750)
         .call(zoom.transform, transform);
 }
