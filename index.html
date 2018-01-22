@@ -245,6 +245,8 @@ var clickOnSkillset = function() {
     } else {
         this.style.backgroundColor = "rgb(42, 180, 201)";
     }
+    //Lower opacity on map
+    filterMap();
 };
 
 function add_skillset_listener() {
@@ -508,6 +510,20 @@ var findOnMap = function() {
     var montrar = document.getElementById("Montrar").childNodes;
     for (var i = 1; i < montrar.length; i += 2) {
         if (montrar[i].getElementsByTagName("g")[0].textContent.trim() === exhibitor_index) {
+            montrar[i].style.opacity = "1";
+            scale_fn(montrar[i].getElementsByTagName("rect")[0].getAttribute("x"),
+                montrar[i].getElementsByTagName("rect")[0].getAttribute("y"));
+        } else {
+            montrar[i].style.opacity = "0.3";
+        }
+    }
+};
+    
+// Find monters in a filter on the map, set all other monters to an opacity of 0.4 to make it clearer to the viewer
+var filterMap = function() {
+    var montrar = document.getElementById("Montrar").childNodes;
+    for (var i = 1; i < montrar.length; i += 2) {
+        if (active.includes(montrar[i].getElementsByTagName("g")[0].textContent.trim())) {
             montrar[i].style.opacity = "1";
             scale_fn(montrar[i].getElementsByTagName("rect")[0].getAttribute("x"),
                 montrar[i].getElementsByTagName("rect")[0].getAttribute("y"));
