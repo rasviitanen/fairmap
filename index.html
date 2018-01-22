@@ -146,7 +146,7 @@ content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable
 </div>
 
 <span style="font-size:2em;cursor:pointer;background-color: #2AB4C9; padding:8px; color:white;" onclick="openNav()">&#9776; Exhibitor list</span>
-
+<button onclick="scale_reset()">Reset Map</button>
 <div id="map-container" class="svg-container" onclick="closeNav()">
     <div id="interactive_map" class="svg-content-responsive"/>
 </div>
@@ -438,6 +438,15 @@ function scale_fn(x, y) {
     var transform = d3.zoomIdentity //<-- Transforms the coordinates when you press on an exhibitor in the list (both pans and zooms)
     .translate((-x*3+ width/2), (-y*3 + height/2))
     .scale(3);
+    d3.select("svg").transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
+        .duration(750)
+        .call(zoom.transform, transform);
+}
+    
+function scale_reset() {
+    var transform = d3.zoomIdentity //<-- Transforms the coordinates when you press on an exhibitor in the list (both pans and zooms)
+    .translate(0,0)
+    .scale(1);
     d3.select("svg").transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
         .duration(750)
         .call(zoom.transform, transform);
