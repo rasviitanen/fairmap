@@ -523,7 +523,10 @@ var findOnMap = function() {
 var filterMap = function() {
     var montrar = document.getElementById("Montrar").childNodes;
     for (var i = 1; i < montrar.length; i += 2) {
-        if (active.includes(montrar[i].getElementsByTagName("g")[0].textContent.trim())) {
+        if (active.length == 0) {
+            montrar[i].style.opacity = "1";
+        }
+        else if (active.includes(montrar[i].getElementsByTagName("g")[0].textContent.trim())) {
             montrar[i].style.opacity = "1";
         } else {
             montrar[i].style.opacity = "0.3";
