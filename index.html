@@ -406,6 +406,8 @@ exhibitor_dict["K87"] = "Xylem";
 exhibitor_dict["K74"] = "Yaskawa Nordic AB";
 exhibitor_dict["C65"] = "ZENUITY";
 exhibitor_dict["T118"] = "ÅF";
+    
+var climate_compensates = ["K80", "T116", "C02", "T135", "T107", "T148", "C62", "T146", "T144", "T138", "T125", "C28", "C35", "T128", "C70", "T151", "C47", "T102", "C56", "C45", "C61", "K79", "C01", "C31", "T98", "C03", "C43", "T123", "K89", "T103", "C58", "T154", "T104", "C38", "T99", "T129", "T145", "T126", "K88", "C09", "T140", "T142", "C69", "C71", "C14", "T133", "K78", "C67", "C48", "C34", "T117", "T132", "C05", "T121", "T124", "C06", "C37", "C36", "T120", "K77", "C50", "C32", "T110", "K75", "C27", "C24", "C72", "C26", "T93", "C08", "C54", "T153", "C30", "C59", "T111", "T105", "C46", "C21", "T101", "C23", "T136", "C13", "T149", "C16", "C44", "T141", "T122", "K82", "T97", "C19", "C64", "T109", "K73", "K81", "C04", "T147", "C63", "C22", "C41", "T100", "K76", "K87", "C65"];
 
 //Size of svg
 var width = 1188,
@@ -432,10 +434,12 @@ d3.xml(svg_link).mimeType("image/svg+xml").get(function(error, xml) {
         node.setAttribute("onclick", "closeNav()");
 
         //add the climate-heart
-        var node_image = document.createElement("IMG");
-        node_image.setAttribute("src", heart_link);
-        node_image.setAttribute("height", "12px");
-        node.appendChild(node_image);
+        if (climate_compensates.includes(montrar[i].getElementsByTagName("g")[0].textContent.trim())) {
+            var node_image = document.createElement("IMG");
+            node_image.setAttribute("src", heart_link);
+            node_image.setAttribute("height", "12px");
+            node.appendChild(node_image);
+        }
 
         //Find the spot on the image
         node.addEventListener('click', findOnMap, false);
