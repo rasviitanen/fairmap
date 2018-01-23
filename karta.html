@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta
+charset="utf-8"
+xmlns:display="http://www.w3.org/1999/xhtml"
+name='viewport'
+content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+/>
+
+<head>
+  <script src="https://d3js.org/d3.v4.js">Text</script>
+  <link rel="stylesheet" type="text/css" href="karta.css">
+</head>
+
+<body>
+  <!--Hidden tooltip, to be shown on hover, displaying the name of the exhibitor-->
+  <div id="tooltip"></div>
+
+  <button onclick="scale_reset()" style="position: absolute; top: 70px; background-color: lightsalmon; border:none; font-size: 1em; color: white; padding: 10px; cursor: pointer">Reset Map</button>
+
+  <div id="exhibitor_list" class="sidenav">
+    <img id="logo" src="http://lintek.larmdagarna.se/wp-content/themes/larm-wp-theme/images/LARM-text-logo.svg" alt="LARM2018">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <input type="text" id="exhibitor_input" onkeyup="filter_exhibitors()" placeholder="Search for exhibitor.." title="Seach for exhibitor">
+      <br>
+      <br>
+          <div class="dropdown">
+            <span style="color: white; background-color: rgb(42, 180, 201); padding: 6px; margin: 8px;">Filter skillsets</span>
+            <div id="skillset_list" class="dropdown-content">
+              <li>Logistics</li>
+              <li>Management</li>
+              <li>Advanced Mathematics</li>
+              <li>Energy- and Environmental Technology</li>
+              <li>Electronics</li>
+              <li>Medical Technology</li>
+              <li>Biology & Biotechnology</li>
+              <li>Finance</li>
+              <li>Physics</li>
+              <li>Chemistry</li>
+              <li>Product Development</li>
+              <li>Control Systems</li>
+              <li>Programming</li>
+              <li>Information Technology</li>
+              <li>Mechanics</li>
+              <li>Construction Technology</li>
+              <li>Graphic Design</li>
+              <li>Marketing</li>
+              <li>Production</li>
+            </div>
+          </div>
+    <ul id="exhibitor_names"></ul>
+  </div>
+
+  <span style="font-size:2em;cursor:pointer;background-color: #2AB4C9; padding:8px; color:white;" onclick="openNav()">&#9776; Exhibitor list</span>
+  <div id="map-container" class="svg-container" onclick="closeNav()">
+      <div id="interactive_map" class="svg-content-responsive"/>
+  </div>
+</body>
+
+<script type="text/javascript" src="exhibitor_data.js"></script>
+<script src="karta.js"></script>
