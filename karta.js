@@ -169,6 +169,10 @@ function scale_reset() {
     d3.select("svg").transition() //<-- Sick animation, >750 ms is prefered, for smooth transition
         .duration(750)
         .call(zoom.transform, transform);
+    var montrar = document.getElementById("Montrar").childNodes;
+    for (var i = 1; i < montrar.length; i += 2) {
+        montrar[i].style.opacity = "1";
+    }
 }
 
 // Find a monter on the map, use scale_fn to jump to it on the map
