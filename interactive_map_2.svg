@@ -1717,31 +1717,7 @@
 		</g>
 	</g>
 	<g id="Rum">
-		<g id="XMLID_1477_">
-			<polygon id="XMLID_1481_" class="st4" points="443.8,119.5 485.3,112.3 475.1,57.4 433.4,65 			"/>
-			<path id="XMLID_1478_" d="M443.3,120.1l-10.5-55.4l42.7-7.7l10.4,55.5L443.3,120.1z M433.8,65.4l10.3,53.7l40.9-7.2l-10.1-54
-				L433.8,65.4z"/>
-		</g>
-		<g id="XMLID_1472_">
-			<polygon id="XMLID_1476_" class="st4" points="401.4,126.9 443.1,119.5 432.7,64.8 391,72.3 			"/>
-			<path id="XMLID_1473_" d="M401,127.3l-10.5-55.4l42.7-7.7l10.4,55.5L401,127.3z M391.4,72.7l10.3,53.7l40.9-7.2l-10.1-54
-				L391.4,72.7z"/>
-		</g>
-		<rect id="XMLID_1471_" x="442.8" y="80.5" class="st3" width="34.3" height="14.8"/>
-		<text transform="matrix(1 0 0 1 443.0786 86.3371)" class="st0 st5 st13">Exhibitor</text>
-		<text transform="matrix(1 0 0 1 446.3604 93.7209)" class="st0 st5 st13">Lounge</text>
-		<rect id="XMLID_1469_" x="400.1" y="87.2" class="st3" width="34.3" height="14.8"/>
-		<text transform="matrix(1 0 0 1 400.2905 93.0725)" class="st0 st5 st13">Exhibitor</text>
-		<text transform="matrix(1 0 0 1 403.5728 100.4568)" class="st0 st5 st13">Lounge</text>
-		<g id="XMLID_1463_">
-			<polygon id="XMLID_1467_" class="st4" points="456.6,188.6 498.2,181.3 487.9,126.5 446.1,134 			"/>
-			<path id="XMLID_1464_" d="M456.2,189.1l-10.5-55.4l42.7-7.7l10.4,55.5L456.2,189.1z M446.6,134.4l10.3,53.7l40.9-7.2l-10.1-54
-				L446.6,134.4z"/>
-		</g>
-		<rect id="XMLID_1462_" x="455.5" y="148.5" class="st3" width="34.3" height="23.5"/>
-		<text transform="matrix(1 0 0 1 455.7695 154.2478)" class="st0 st5 st13">Exhibitor</text>
-		<text transform="matrix(1 0 0 1 460.4199 161.6316)" class="st0 st5 st13">Cloak-</text>
-		<text transform="matrix(1 0 0 1 462.8809 169.0163)" class="st0 st5 st13">room</text>
+
 		<g id="XMLID_1456_">
 			<rect id="XMLID_1460_" x="173.8" y="416.9" class="st4" width="74.4" height="46.4"/>
 			<path id="XMLID_1457_" d="M248.6,463.7h-75.2v-47.2h75.2V463.7z M174.2,462.9h73.6v-45.5h-73.6V462.9z"/>
@@ -1771,8 +1747,8 @@
 		<text transform="matrix(1 0 0 1 192.2476 378.0686)" class="st0 st5 st15">STUDENT</text>
 		<text transform="matrix(1 0 0 1 194.2983 385.4534)" class="st0 st5 st15">LOUNGE</text>
 		<rect id="XMLID_1434_" x="171.6" y="327.4" class="st3" width="39.4" height="18.2"/>
-		<text transform="matrix(1 0 0 1 174.6763 332.8167)" class="st0 st5 st15">STUDENT</text>
-		<text transform="matrix(1 0 0 1 176.7271 340.2014)" class="st0 st5 st15">LOUNGE</text>
+		<text transform="matrix(1 0 0 1 173 332.8167)" class="st0 st5 st15">STUDENT</text>
+		<text transform="matrix(1 0 0 1 175 340.2014)" class="st0 st5 st15">LOUNGE</text>
 		<rect id="XMLID_1432_" x="178.6" y="432.4" class="st3" width="62.4" height="33.6"/>
 		<text transform="matrix(1 0 0 1 187.8784 439.0364)" class="st0 st5 st16">STARTUP</text>
 		<text transform="matrix(1 0 0 1 198.2715 448.8811)" class="st0 st5 st16">ZONE</text>
