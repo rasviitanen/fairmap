@@ -4,7 +4,7 @@ Fairmap is an interactive map using SVG togheter with D3 for zoom and pan contro
 Preview available at https://rasviitanen.github.io/fairmap/karta.html
 
 ### To create your own map simply:
-Put all interactive graphics in a layer called "Montrar", if using Adobe Illustrator (Or in a <g id="Montrar"> if using pure SVG). To enable interaction, each entity needs to be identified with a label in the form of a text element (by using the type tool in Adobe Illustrator, the text you write will be the label), this label is then used to map the interactive elements together.
+Put all interactive graphics in a layer called "Montrar", if using Adobe Illustrator (Or in a `<g id="Montrar">` if using pure SVG). To enable interaction, each entity needs to be identified with a label in the form of a text element (by using the type tool in Adobe Illustrator, the text you write will be the label), this label is then used to map the interactive elements together.
   
 For example:
   1. Create a layer or group in Adobe Illustrator called "Montrar".
