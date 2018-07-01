@@ -11,7 +11,7 @@ For example:
   2. Select the type tool (t), and write `My Unique Label`, make sure belongs to "Montrar".
   3. In exhibitor_data.js, put the following: `exhibitor_dict["My Unique Label"] = "Test Company";`
 
-Now the object tied to `My Unique Label` will be interacitve, i.e. selectable from the list and hoverable.
+Now the object tied to `My Unique Label` will be interacitve, i.e. selectable from the list (using `Test Company`) and hoverable on the map.
 
 To style the object, simply put it in a group and add new elements to the group, these will also be interactive. 
 For example:
